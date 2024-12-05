@@ -32,9 +32,7 @@ test.describe('New todo', () => {
   test('text field is cleared when item is added', async ({ page }) => {
     const todoInput = page.getByPlaceholder('What needs to be done?')
 
-    await page
-      .getByPlaceholder('What needs to be done?')
-      .fill('saturate with rain water')
+    await todoInput.fill('saturate with rain water')
     await todoInput.press('Enter')
 
     await expect(todoInput).toBeEmpty()

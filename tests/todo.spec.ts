@@ -6,13 +6,13 @@ test.describe('New todo', () => {
   })
 
   test('add two tasks, mark one as completed', async ({ page }) => {
-    await page
-      .getByPlaceholder('What needs to be done?')
-      .fill('water the plants')
-    await page.getByPlaceholder('What needs to be done?').press('Enter')
+    const todoInput = page.getByPlaceholder('What needs to be done?')
 
-    await page.getByPlaceholder('What needs to be done?').fill('feed the dog')
-    await page.getByPlaceholder('What needs to be done?').press('Enter')
+    await todoInput.fill('water the plants')
+    await todoInput.press('Enter')
+
+    await todoInput.fill('feed the dog')
+    await todoInput.press('Enter')
 
     await page
       .locator('li')
@@ -30,11 +30,13 @@ test.describe('New todo', () => {
   })
 
   test('text field is cleared when item is added', async ({ page }) => {
+    const todoInput = page.getByPlaceholder('What needs to be done?')
+
     await page
       .getByPlaceholder('What needs to be done?')
       .fill('saturate with rain water')
-    await page.getByPlaceholder('What needs to be done?').press('Enter')
+    await todoInput.press('Enter')
 
-    await expect(page.getByPlaceholder('What needs to be done?')).toBeEmpty()
+    await expect(todoInput).toBeEmpty()
   })
 })

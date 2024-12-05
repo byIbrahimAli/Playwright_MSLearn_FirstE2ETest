@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('New todo', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://demo.playwright.dev/todomvc/#/')
+    await page.goto('')
   })
 
   test('add two tasks, mark one as completed', async ({ page }) => {
